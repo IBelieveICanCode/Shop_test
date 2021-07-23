@@ -15,7 +15,7 @@ MonoBehaviour:
   _consumerPrefab: {fileID: 6891784972628893298, guid: 8f2c612835fe2f549ac268f74cc22c4a,
     type: 3}
   _consumerSettings:
-    _speed: 10
+    _speed: 7
     _buyingTime: 3
     _howManyGoodsToBuy: 3
     _scoresForBuying: 10
