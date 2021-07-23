@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 public static class Utility 
 {
     public static T[] ShuffleArray<T>(T[] array, int seed)
     {
-        Random prng = new Random(seed);
+        System.Random prng = new System.Random(seed);
 
         for (int i = 0; i < array.Length - 1; i++)
         {
@@ -19,11 +19,13 @@ public static class Utility
         return array;
     }
 
-    public static T ReturnRandomElem<T>(T[] array, int seed)
+    public static Vector3 ScreenToWorldPos(Camera camera, Vector3 position)
     {
-        Random prng = new Random(seed);
-        int randomIndex = prng.Next(0, array.Length);
-        return array[randomIndex];
+        Debug.Log(camera);
+        position.z = camera.nearClipPlane;
+        return camera.ScreenToWorldPoint(position);
     }
+
+
 
 }

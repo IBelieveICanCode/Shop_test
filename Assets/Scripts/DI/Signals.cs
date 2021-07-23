@@ -1,8 +1,21 @@
-﻿public class GivePlayerPointsSignal
+﻿namespace ShoppingGame
 {
-    public int Points { get; private set; }
-    public GivePlayerPointsSignal(int points)
+
+    public class GivePlayerCoinsSignal
     {
-        Points = points;
+        public int Coins { get; private set; }
+        public GivePlayerCoinsSignal(int points)
+        {
+            Coins = points;
+        }
+    }
+
+    public class LoadSaveObjectSignal
+    {
+        public SaveSpace.SaveObject SaveObject { get; private set; }
+        public LoadSaveObjectSignal(SaveSpace.SaveObject saveObject)
+        {
+            SaveObject = saveObject;
+        }
     }
 }

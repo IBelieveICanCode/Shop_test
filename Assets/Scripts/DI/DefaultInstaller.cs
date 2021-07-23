@@ -1,17 +1,23 @@
 using Zenject;
 using UnityEngine;
+using ShoppingGame.Customer;
 
-public class DefaultInstaller : MonoInstaller
+namespace ShoppingGame
 {
-    [Inject]
-    private readonly GameConfig config;
-    public override void InstallBindings()
+    public class DefaultInstaller : MonoInstaller
     {
-        Container.BindFactory<Vector3, CustomerModel, CustomerModel.CustomerFactory>()
-            .FromComponentInNewPrefab(config.ConsumerPrefab)
-            .WithGameObjectName("Consumer");
+        [Inject]
+        private readonly GameConfig config;
 
-        SignalBusInstaller.Install(Container);
-        Container.DeclareSignal<GivePlayerPointsSignal>();
+        public override void InstallBindings()
+        {
+            Container.BindFactory<Vector3, ConsumerSettings, ConsumerModel, ConsumerModel.CustomerFactory>()
+                .FromComponentInNewPrefab(config.ConsumerPrefab)
+                .WithGameObjectName("Consumer");
+
+            SignalBusInstaller.Install(Container);
+            Container.DeclareSignal<GivePlayerCoinsSignal>();
+            Container.DeclareSignal<LoadSaveObjectSignal>();
+        }
     }
 }

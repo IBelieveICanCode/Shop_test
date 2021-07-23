@@ -5,7 +5,6 @@ public class Shop : MonoBehaviour, IForCustomers
 {
     [SerializeField]
     BuyingPlace[] _buyingPositions;
-    //Queue<BuyingPlace> _shuffledBuyingPlaces;
     public BuyingPlace[] BuyingPlaces => _buyingPositions;
    
 }

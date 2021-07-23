@@ -2,15 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using ShoppingGame.Customer;
 
-public class GameAdministration : MonoBehaviour
+namespace ShoppingGame
 {
-    [Inject]
-   readonly CustomerModel.CustomerFactory _customerPool;
-
-    private void Start()
+    public class GameAdministration : MonoBehaviour
     {
-        for (int i = 0; i < 10; i++)
-            _customerPool.Create(Vector3.zero);
+        [Inject]
+        readonly GameConfig _config;
+        [Inject]
+        readonly ConsumerModel.CustomerFactory _customerFactory;
+        [Inject]
+        readonly Environment _env;
+
+        [SerializeField]
+        int _numPeople = 20;
+
+        private void Start()
+        {
+            for (int i = 0; i < _numPeople; i++)
+                _customerFactory.Create(_env.GetStartingPoint().position, _config.ConsumerSettings);
+        }
     }
 }
+
+
